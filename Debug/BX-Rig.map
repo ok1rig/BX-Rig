@@ -1,7 +1,7 @@
 Archive member included because of file (symbol)
 
 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.876/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/avr4\libgcc.a(_divmodsi4.o)
-                              dds.o (__divmodsi4)
+                              ad9850.o (__divmodsi4)
 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.876/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/avr4\libgcc.a(_exit.o)
                               d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.876/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/../../../../avr/lib/avr4/crtm88p.o (exit)
 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.876/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/avr4\libgcc.a(_udivmodsi4.o)
@@ -10,14 +10,18 @@ d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.876/avr8-gnu-
 Discarded input sections
 
  .bss           0x00000000        0x0 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.876/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/../../../../avr/lib/avr4/crtm88p.o
+ .text          0x00000000        0x0 ad9850.o
+ .bss           0x00000000        0x0 ad9850.o
+ .text.dds_spi_byte
+                0x00000000       0x72 ad9850.o
+ .text.dds_load
+                0x00000000       0x6c ad9850.o
  .text          0x00000000        0x0 BX-Rig.o
  .bss           0x00000000        0x0 BX-Rig.o
- .text          0x00000000        0x0 dds.o
- .bss           0x00000000        0x0 dds.o
- .text.dds_spi_byte
-                0x00000000       0x72 dds.o
- .text.dds_load
-                0x00000000       0x6c dds.o
+ .text          0x00000000        0x0 hd44780.o
+ .bss           0x00000000        0x0 hd44780.o
+ .text.lcd_init
+                0x00000000       0x20 hd44780.o
  .text          0x00000000        0x0 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.876/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/avr4\libgcc.a(_divmodsi4.o)
  .bss           0x00000000        0x0 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.876/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/avr4\libgcc.a(_divmodsi4.o)
  .text.libgcc.mul
@@ -70,8 +74,9 @@ Linker script and memory map
 
 Address of section .data set to 0x800100
 LOAD d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.876/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/../../../../avr/lib/avr4/crtm88p.o
+LOAD ad9850.o
 LOAD BX-Rig.o
-LOAD dds.o
+LOAD hd44780.o
 START GROUP
 LOAD d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.876/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/../../../../avr/lib/avr4\libm.a
 END GROUP
@@ -249,20 +254,20 @@ LOAD d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.876/avr8
                 0x00000044                __vector_20
                 0x00000046                . = ALIGN (0x2)
  *(.text.*)
- .text.main     0x00000046       0x36 BX-Rig.o
-                0x00000046                main
  .text.dds_clk_pulse
-                0x0000007c       0x30 dds.o
-                0x0000007c                dds_clk_pulse
+                0x00000046       0x30 ad9850.o
+                0x00000046                dds_clk_pulse
  .text.dds_fq_ud_pulse
-                0x000000ac       0x30 dds.o
-                0x000000ac                dds_fq_ud_pulse
+                0x00000076       0x30 ad9850.o
+                0x00000076                dds_fq_ud_pulse
  .text.dds_init
-                0x000000dc       0x78 dds.o
-                0x000000dc                dds_init
+                0x000000a6       0x78 ad9850.o
+                0x000000a6                dds_init
  .text.dds_freq2word
-                0x00000154       0x6c dds.o
-                0x00000154                dds_freq2word
+                0x0000011e       0x6c ad9850.o
+                0x0000011e                dds_freq2word
+ .text.main     0x0000018a       0x36 BX-Rig.o
+                0x0000018a                main
  .text.libgcc.div
                 0x000001c0       0x36 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.876/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/avr4\libgcc.a(_divmodsi4.o)
                 0x000001c0                __divmodsi4
@@ -300,8 +305,9 @@ LOAD d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.876/avr8
                 0x00800100                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800100        0x0 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.876/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/../../../../avr/lib/avr4/crtm88p.o
+ .data          0x00800100        0x0 ad9850.o
  .data          0x00800100        0x0 BX-Rig.o
- .data          0x00800100        0x0 dds.o
+ .data          0x00800100        0x0 hd44780.o
  .data          0x00800100        0x0 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.876/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/avr4\libgcc.a(_divmodsi4.o)
  .data          0x00800100        0x0 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.876/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/avr4\libgcc.a(_exit.o)
  .data          0x00800100        0x0 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.876/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/avr4\libgcc.a(_udivmodsi4.o)
@@ -370,9 +376,10 @@ LOAD d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.876/avr8
 
 .comment        0x00000000       0x2f
  *(.comment)
- .comment       0x00000000       0x2f BX-Rig.o
+ .comment       0x00000000       0x2f ad9850.o
                                  0x30 (size before relaxing)
- .comment       0x00000000       0x30 dds.o
+ .comment       0x00000000       0x30 BX-Rig.o
+ .comment       0x00000000       0x30 hd44780.o
 
 .debug
  *(.debug)
@@ -386,48 +393,57 @@ LOAD d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.876/avr8
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000       0x68
+.debug_aranges  0x00000000       0x88
  *(.debug_aranges)
  .debug_aranges
-                0x00000000       0x20 BX-Rig.o
+                0x00000000       0x48 ad9850.o
  .debug_aranges
-                0x00000020       0x48 dds.o
+                0x00000048       0x20 BX-Rig.o
+ .debug_aranges
+                0x00000068       0x20 hd44780.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000      0x1cc
+.debug_info     0x00000000      0x263
  *(.debug_info)
- .debug_info    0x00000000       0x89 BX-Rig.o
- .debug_info    0x00000089      0x143 dds.o
+ .debug_info    0x00000000      0x157 ad9850.o
+ .debug_info    0x00000157       0x89 BX-Rig.o
+ .debug_info    0x000001e0       0x83 hd44780.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev   0x00000000      0x139
+.debug_abbrev   0x00000000      0x193
  *(.debug_abbrev)
- .debug_abbrev  0x00000000       0x55 BX-Rig.o
- .debug_abbrev  0x00000055       0xe4 dds.o
+ .debug_abbrev  0x00000000       0xed ad9850.o
+ .debug_abbrev  0x000000ed       0x55 BX-Rig.o
+ .debug_abbrev  0x00000142       0x51 hd44780.o
 
-.debug_line     0x00000000      0x194
+.debug_line     0x00000000      0x26b
  *(.debug_line)
- .debug_line    0x00000000       0x3d BX-Rig.o
- .debug_line    0x0000003d      0x157 dds.o
+ .debug_line    0x00000000      0x15a ad9850.o
+ .debug_line    0x0000015a       0x3d BX-Rig.o
+ .debug_line    0x00000197       0xd4 hd44780.o
 
-.debug_frame    0x00000000      0x108
+.debug_frame    0x00000000      0x13c
  *(.debug_frame)
- .debug_frame   0x00000000       0x34 BX-Rig.o
- .debug_frame   0x00000034       0xd4 dds.o
+ .debug_frame   0x00000000       0xd4 ad9850.o
+ .debug_frame   0x000000d4       0x34 BX-Rig.o
+ .debug_frame   0x00000108       0x34 hd44780.o
 
-.debug_str      0x00000000       0xf9
+.debug_str      0x00000000      0x114
  *(.debug_str)
- .debug_str     0x00000000       0x8a BX-Rig.o
+ .debug_str     0x00000000       0xe9 ad9850.o
+                                0x11d (size before relaxing)
+ .debug_str     0x000000e9       0x13 BX-Rig.o
                                  0xbe (size before relaxing)
- .debug_str     0x0000008a       0x6f dds.o
-                                0x11a (size before relaxing)
+ .debug_str     0x000000fc       0x18 hd44780.o
+                                 0xcb (size before relaxing)
 
-.debug_loc      0x00000000      0x1d1
+.debug_loc      0x00000000      0x20c
  *(.debug_loc)
- .debug_loc     0x00000000       0x48 BX-Rig.o
- .debug_loc     0x00000048      0x189 dds.o
+ .debug_loc     0x00000000      0x189 ad9850.o
+ .debug_loc     0x00000189       0x48 BX-Rig.o
+ .debug_loc     0x000001d1       0x3b hd44780.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -435,10 +451,11 @@ LOAD d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.2.876/avr8
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000       0x48
+.debug_ranges   0x00000000       0x58
  *(.debug_ranges)
- .debug_ranges  0x00000000       0x10 BX-Rig.o
- .debug_ranges  0x00000010       0x38 dds.o
+ .debug_ranges  0x00000000       0x38 ad9850.o
+ .debug_ranges  0x00000038       0x10 BX-Rig.o
+ .debug_ranges  0x00000048       0x10 hd44780.o
 
 .debug_macro
  *(.debug_macro)

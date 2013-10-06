@@ -2,7 +2,9 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
+ad9850.c
+
 BX-Rig.c
 
-dds.c
+hd44780.c
 

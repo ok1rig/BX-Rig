@@ -7,7 +7,7 @@
 
 
 #include <avr/io.h>
-#include "dds.h"
+#include "ad9850.h"
 
 int main(void)
 {

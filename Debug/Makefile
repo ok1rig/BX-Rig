@@ -36,8 +36,9 @@ SUBDIRS :=
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
+../ad9850.c \
 ../BX-Rig.c \
-../dds.c
+../hd44780.c
 
 
 PREPROCESSING_SRCS += 
@@ -47,23 +48,27 @@ ASM_SRCS +=
 
 
 OBJS +=  \
+ad9850.o \
 BX-Rig.o \
-dds.o
+hd44780.o
 
 
 OBJS_AS_ARGS +=  \
+ad9850.o \
 BX-Rig.o \
-dds.o
+hd44780.o
 
 
 C_DEPS +=  \
+ad9850.d \
 BX-Rig.d \
-dds.d
+hd44780.d
 
 
 C_DEPS_AS_ARGS +=  \
+ad9850.d \
 BX-Rig.d \
-dds.d
+hd44780.d
 
 
 OUTPUT_FILE_PATH +=BX-Rig.elf
@@ -77,6 +82,8 @@ OUTPUT_FILE_DEP:= ./makedep.mk
 LIB_DEP+= 
 
 # AVR32/GNU C Compiler
+
+
 
 
 
