@@ -42,7 +42,7 @@ unsigned long int dds_freq2word(long int hz) {
 
 
 void dds_spi_byte(unsigned char d) {	
-	for (int loop=1; loop != 8; loop++) {
+	for (int loop=8; loop != 0; loop--) {
 		if (d & 0x01) 
 			DDS_DATA_PORT |= (1 << DDS_DATA);
 		else
@@ -53,11 +53,11 @@ void dds_spi_byte(unsigned char d) {
 }
 
 void dds_load(long int tuning_word) {		
-	for (int loop=1; loop != 3; loop++) {
+	for (int loop=4; loop != 0; loop--) {
 		dds_spi_byte(tuning_word & 0xFF);
 		tuning_word >>= 8;
 	}
 	
-	dds_spi_byte(0x00);		//control word
+	dds_spi_byte(0x00);		//control byte
 	dds_fq_ud_pulse();		//store
 }

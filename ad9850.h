@@ -17,9 +17,8 @@
 #define DDS_DATA_DDR	DDRD
 #define DDS_DATA_PORT	PORTD
 
-#define DDS_REF_FREQ	125000000
-#define DDS_TUNING_WORD_MAX 2 ^ 32
-
+#define DDS_REF_FREQ	125000000UL
+#define DDS_TUNING_WORD_MAX (1ULL << 32)
 
 void dds_init(void);
 void dds_load(long int tuning_word);

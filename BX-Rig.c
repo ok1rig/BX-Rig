@@ -15,5 +15,6 @@ int main(void)
 	
 	dds_init();
 	x = dds_freq2word(7000001);
+	dds_load(x);
 	x += 0; 
 }

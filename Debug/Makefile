@@ -31,7 +31,8 @@ OUTPUT_FILE_DEP:=
 LIB_DEP:=
 
 # Every subdirectory with source files must be described here
-SUBDIRS := 
+SUBDIRS :=  \
+../pdf
 
 
 # Add inputs and outputs from these tool invocations to the build variables 
